@@ -18,8 +18,8 @@ package integration;
 import java.util.Collections;
 import java.util.Random;
 
-import example.ZipkinStreamServerApplication;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +37,8 @@ import org.springframework.messaging.Message;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import example.ZipkinStreamServerApplication;
 import tools.AbstractIntegrationTest;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -44,6 +46,7 @@ import tools.AbstractIntegrationTest;
 		ZipkinStreamServerApplication.class })
 @WebIntegrationTest({ "server.port=0", "management.health.rabbit.enabled=false" })
 @ActiveProfiles("test")
+@Ignore
 public class ZipkinStreamTests extends AbstractIntegrationTest {
 
 	@Value("${local.server.port}")
