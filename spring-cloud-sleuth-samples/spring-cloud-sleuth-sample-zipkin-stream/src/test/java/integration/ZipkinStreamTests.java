@@ -17,6 +17,7 @@ package integration;
 
 import java.util.Collections;
 import java.util.Random;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.Before;
 import org.junit.Ignore;
@@ -60,7 +61,9 @@ public class ZipkinStreamTests extends AbstractIntegrationTest {
 
 	@Before
 	public void setup() {
-		await().until(zipkinServerIsUp());
+		System.out.println("SETUP");
+		await().atMost(5, TimeUnit.SECONDS).until(zipkinServerIsUp());
+		System.out.println("ZIPKIN SERVER IS UP");
 	}
 
 	@Test
@@ -68,9 +71,12 @@ public class ZipkinStreamTests extends AbstractIntegrationTest {
 		Span span = Span.builder().traceId(this.traceId).spanId(this.spanId).name("http:test").build();
 		span.tag(getRequiredBinaryAnnotationName(), "10131");
 
+		System.out.println("BEFORE SENDING MSG");
 		this.input.send(messageWithSpan(span));
+		System.out.println("AFTER SENDING MSG");
 
-		await().until(allSpansWereRegisteredInZipkinWithTraceIdEqualTo(this.traceId));
+		await().atMost(5, TimeUnit.SECONDS).until(allSpansWereRegisteredInZipkinWithTraceIdEqualTo(this.traceId));
+		System.out.println("DONE!");
 	}
 
 	private Message<Spans> messageWithSpan(Span span) {
