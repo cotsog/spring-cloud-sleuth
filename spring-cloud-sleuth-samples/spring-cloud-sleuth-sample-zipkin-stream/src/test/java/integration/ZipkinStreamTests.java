@@ -47,7 +47,6 @@ import tools.AbstractIntegrationTest;
 		ZipkinStreamServerApplication.class })
 @WebIntegrationTest({ "server.port=0", "management.health.rabbit.enabled=false" })
 @ActiveProfiles("test")
-@Ignore
 public class ZipkinStreamTests extends AbstractIntegrationTest {
 
 	@Value("${local.server.port}")
