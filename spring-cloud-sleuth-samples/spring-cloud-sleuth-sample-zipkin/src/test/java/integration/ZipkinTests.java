@@ -84,6 +84,7 @@ public class ZipkinTests extends AbstractIntegrationTest {
 		@Bean
 		@Primary
 		ZipkinProperties testZipkinProperties() {
+			System.out.println("WaitUntilZipkinIsUpConfig::testZipkinProperties");
 			ZipkinProperties zipkinProperties = new ZipkinProperties();
 			zipkinProperties.setBaseUrl(zipkin.httpUrl());
 			return zipkinProperties;
@@ -94,6 +95,7 @@ public class ZipkinTests extends AbstractIntegrationTest {
 	@EnableZipkinServer
 	protected static class ZipkinServer {
 		public static void main(String[] args) {
+			System.out.println("ZipkinServer::main");
 			SpringApplication.run(ZipkinServer.class, args);
 		}
 	}
