@@ -58,6 +58,7 @@ public abstract class AbstractIntegrationTest {
 
 	@Before
 	public void clearSpanBefore() {
+		System.out.println("AbstractIntegrationTest::clearSpanBefore");
 		IntegrationTestSpanContextHolder.removeCurrentSpan();
 	}
 
