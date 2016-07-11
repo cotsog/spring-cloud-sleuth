@@ -13,6 +13,7 @@ public class SampleSleuthApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		System.out.println("spring-cloud-sleuth-sample-stream::SampleSleuthApplicationTests::contextLoads");
 	}
 
 }
