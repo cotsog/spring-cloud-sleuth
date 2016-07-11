@@ -15,6 +15,7 @@ public class SampleSleuthApplicationTests {
 
 	@Test
 	public void contextLoads() {
+		System.out.println("spring-cloud-sleuth-sample-zipkin::SampleSleuthApplicationTests::contextLoads");
 	}
 
 }
